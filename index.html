@@ -49,6 +49,8 @@ const showChurch = (c) => {
     if (('mainPic' in c) && ('thumb' in c.mainPic)) {
       DGEByID('mainPic').src = c.mainPic.thumb
     }
+const user = netlifyIdentity.currentUser()
+DGEByID('user').innerHTML = user
 }
 
 const sk1Val = "St. Peter's"
@@ -56,8 +58,6 @@ getChurch(sk1Val).then( d => showChurch(d.Item) )
   .catch(err => { // !! bad sk1Val doesn't throw catch; goes to showChurch with d.Item==null
     DGEByID('status').innerHTML = "Unable to read item: " + JSON.stringify(err)
   }) 
-const user = netlifyIdentity.currentUser()
-DGEByID('user').innerHTML = user
 
 </script>
 </head>
