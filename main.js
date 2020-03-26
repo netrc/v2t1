@@ -34,7 +34,7 @@ const showChurch = (c) => {
       DGEByID('mainPic').src = c.mainPic.thumb
     }
 const user = netlifyIdentity.currentUser()
-DGEByID('user').innerHTML = (!user) ? `user is null` : `${user.email} ... ${user.user_metadata.full_name}`
+DGEByID('user').innerHTML = (!user) ? `user is null` : `${user.email} ... ${user.user_metadata.full_name} BTW VLCB_TABLE_NAME: ${VLCB.TABLE_NAME}`
 }
 
 const sk1Val = "St. Peter's"
