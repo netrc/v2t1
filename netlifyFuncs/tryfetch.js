@@ -10,7 +10,7 @@ exports.handler = async (event, context) => {
   const res = await axios.get("http://httpbin.org/uuid")
 //  const resj = JSON.parse(res.data)
 //  const uuid = resj.uuid
-const uuid = res.data
+const uuid = JSON.stringify(res.data)
 
   return {
     statusCode: 200,
