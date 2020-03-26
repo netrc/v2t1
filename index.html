@@ -56,6 +56,9 @@ getChurch(sk1Val).then( d => showChurch(d.Item) )
   .catch(err => { // !! bad sk1Val doesn't throw catch; goes to showChurch with d.Item==null
     DGEByID('status').innerHTML = "Unable to read item: " + JSON.stringify(err)
   }) 
+const user = netlifyIdentity.currentUser()
+DGEByID('user').innerHTML = user
+
 </script>
 </head>
 
@@ -72,6 +75,7 @@ year: <span id="cyear" ></span>
 address: <span id="caddress"> </span> <a id="clatlon" href="" target="_blank">map</a> 
 <h4> Notes: </h4>
 <div id="cmainNote" ></div>
+<br><br><br> <div id="user"><div>
 
 <div class="footer" id="status"></div>
 </body>
