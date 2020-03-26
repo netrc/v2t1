@@ -12,6 +12,8 @@
 </style>
 <script src="https://sdk.amazonaws.com/js/aws-sdk-2.7.16.min.js"></script>
 <script src="https://unpkg.com/showdown/dist/showdown.min.js"></script>
+<script type="text/javascript" src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
 
 <script>
 AWS.config.update({
@@ -58,6 +60,9 @@ getChurch(sk1Val).then( d => showChurch(d.Item) )
 </head>
 
 <body>
+<br><br>
+  <div data-netlify-identity-menu></div>
+
 <br><br>
 <h2 id="cname" ></h2>
 <img id="mainPic" src="" alt="mainPic..." height=200 width=320> </img>
