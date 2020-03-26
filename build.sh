@@ -5,7 +5,7 @@ mkdir -p ${D}
 
 cp index.html main.js ${D}
 
-cat > ${D}/.env.js <<END_OF_HERE
+cat > ${D}/env.js <<END_OF_HERE
 
 // this does not keep the strings secret
 // but it does keep them out of github
@@ -18,4 +18,4 @@ const VLCB = {
 
 END_OF_HERE
 
-echo ....done with build.sh - $(pwd) : $(ls -l .env.js dist/.env.js)
+echo ....done with build.sh - $(pwd) : $(ls -l dist/env.js)
