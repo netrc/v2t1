@@ -1,7 +1,10 @@
 #!/bin/bash
 
 D=dist
+mkdir -p ${D}
+
 cp index.html main.js ${D}
+
 cat > ${D}/.env.js <<END_OF_HERE
 
 // this does not keep the strings secret
