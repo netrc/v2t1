@@ -18,4 +18,6 @@ const VLCB = {
 
 END_OF_HERE
 
+( cd netlifyFuncs ; npm install )
+
 echo ....done with build.sh - $(pwd) : $(ls -l dist/env.js)
