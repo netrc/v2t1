@@ -13,6 +13,10 @@ const DGEByID = (id) => document.getElementById(id)
 const mapUrl = (ll) => `https://maps.google.com/maps?ll=${ll[0]},${ll[1]}&q=${ll[0]},${ll[1]} &hl=en&t=m&z=12`
 const Table = "dtest1"
 
+if (!VLCB) {
+  VLCB = { TABLE_NAME: 'no global vlcb' }
+}
+
 const getChurch = (sk1Val) => {
   const pk1Val = "church"
   var params = {
