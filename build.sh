@@ -12,3 +12,5 @@ const VLCB = {
 }
 
 END_OF_HERE
+
+echo ....done with build.sh
