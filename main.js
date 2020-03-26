@@ -16,6 +16,7 @@ const Table = "dtest1"
 if (typeof(VLCB) == "undefined") {
   VLCB = { TABLE_NAME: 'no global vlcb' }
 }
+console.log(`VLCB_TABLE_NAME: ${VLCB.TABLE_NAME}`)
 
 const getChurch = (sk1Val) => {
   const pk1Val = "church"
