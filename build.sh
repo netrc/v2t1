@@ -11,7 +11,7 @@ cat > ${D}/env.js <<END_OF_HERE
 // but it does keep them out of github
 
 const VLCB = {
-  TABLE_NAME: '$VLCB_TABLENAME',
+  TABLE_NAME: '$VLCB_TABLE_NAME',
   AWS_ID: '$VLCB_AWS_ID',
   AWS_SECRET: '$VLCB_AWS_SECRET'
 }
