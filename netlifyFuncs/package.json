@@ -1,0 +1,13 @@
+{
+  "name": "netlifyfuncs",
+  "version": "0.1.0",
+  "description": "vlcb funcs",
+  "dependencies": {
+    "axios": "0.19.*"
+  },
+  "scripts": {
+    "build": "npm install"
+  },
+  "author": "netrc",
+  "license": "ISC"
+}
