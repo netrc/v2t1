@@ -8,11 +8,11 @@ exports.handler = async (event, context) => {
   const uStr = (user) ? JSON.stringify(user) : 'no u val'
 
   const res = await axios.get("http://httpbin.org/uuid")
-  const resj = JSON.parse(res)
-  const uuid = res
+  const resj = JSON.parse(res.data)
+  const uuid = resj.uuid
 
   return {
     statusCode: 200,
-    body: `Hello, World - res:${res} .... VLCB_TABLE_NAME:${process.env.VLCB_TABLE_NAME} - set via netlifyFuncs...i:${iStr}   .....   u:${uStr}`
+    body: `Hello, World - uuid:${uuid} .... VLCB_TABLE_NAME:${process.env.VLCB_TABLE_NAME} - set via netlifyFuncs...i:${iStr}   .....   u:${uStr}`
   };
 };
