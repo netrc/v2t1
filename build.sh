@@ -13,4 +13,4 @@ const VLCB = {
 
 END_OF_HERE
 
-echo ....done with build.sh
+echo ....done with build.sh - $(pwd) : $(ls -l .env.js)
