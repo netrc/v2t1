@@ -1,8 +1,4 @@
 
-
-const docClient = new AWS.DynamoDB.DocumentClient()
-const mdConv = new showdown.Converter()
-
 if (typeof(VLCB) == "undefined") {
   VLCB = { TABLE_NAME: 'no global vlcb' }
 }
@@ -13,6 +9,9 @@ AWS.config.update({
   accessKeyId: VLCB.AWS_ID,  // dyndb ro access only
   secretAccessKey: VLCB.AWS_SECRET 
 })
+
+const docClient = new AWS.DynamoDB.DocumentClient()
+const mdConv = new showdown.Converter()
 
 const DGEByID = (id) => document.getElementById(id)
 const mapUrl = (ll) => `https://maps.google.com/maps?ll=${ll[0]},${ll[1]}&q=${ll[0]},${ll[1]} &hl=en&t=m&z=12`
