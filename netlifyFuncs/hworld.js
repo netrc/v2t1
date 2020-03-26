@@ -5,6 +5,6 @@ exports.handler = async (event, context) => {
   const uStr = (user) ? JSON.stringify(user) : 'no u val'
   return {
     statusCode: 200,
-    body: `Hello, World - set via netlifyFuncs...i:${iStr}   .....   u:${u}`
+    body: `Hello, World - set via netlifyFuncs...i:${iStr}   .....   u:${uStr}`
   };
 };
