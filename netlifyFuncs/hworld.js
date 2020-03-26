@@ -5,6 +5,6 @@ exports.handler = async (event, context) => {
   const uStr = (user) ? JSON.stringify(user) : 'no u val'
   return {
     statusCode: 200,
-    body: `Hello, World - set via netlifyFuncs...i:${iStr}   .....   u:${uStr}`
+    body: `Hello, World - VLCB_ENVA:${process.env.VLCB_ENVA} - set via netlifyFuncs...i:${iStr}   .....   u:${uStr}`
   };
 };
