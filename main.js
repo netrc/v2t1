@@ -1,27 +1,26 @@
 
 
-AWS.config.update({
-  region: "us-east-1",
-  accessKeyId: "AKIAS5OWNDRYLHHIL6VE",  // dyndb ro access only
-  secretAccessKey: "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"
-})
-
 const docClient = new AWS.DynamoDB.DocumentClient()
 const mdConv = new showdown.Converter()
-
-const DGEByID = (id) => document.getElementById(id)
-const mapUrl = (ll) => `https://maps.google.com/maps?ll=${ll[0]},${ll[1]}&q=${ll[0]},${ll[1]} &hl=en&t=m&z=12`
-const Table = "dtest1"
 
 if (typeof(VLCB) == "undefined") {
   VLCB = { TABLE_NAME: 'no global vlcb' }
 }
 console.log(`VLCB_TABLE_NAME: ${VLCB.TABLE_NAME}`)
 
+AWS.config.update({
+  region: "us-east-1",
+  accessKeyId: VLCB.AWS_ID,  // dyndb ro access only
+  secretAccessKey: VLCB.AWS_SECRET 
+})
+
+const DGEByID = (id) => document.getElementById(id)
+const mapUrl = (ll) => `https://maps.google.com/maps?ll=${ll[0]},${ll[1]}&q=${ll[0]},${ll[1]} &hl=en&t=m&z=12`
+
 const getChurch = (sk1Val) => {
   const pk1Val = "church"
   var params = {
-    TableName: Table,
+    TableName: VLCB.TABLE_NAME,
     Key:{ pk1: pk1Val, sk1: sk1Val }
   }
   return docClient.get(params).promise()
