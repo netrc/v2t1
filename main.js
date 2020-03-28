@@ -25,8 +25,8 @@ const currentUser = netlifyIdentity.currentUser()
 //DGEByID('currentUser').innerHTML = (!user) ? `user is null` : `${user.email} ... ${user.user_metadata.full_name} roles:${user.user_metadata.roles.join(',')}`
 console.log(`goddam - does anything work: currentUser: ${(currentUser)?'cu is not null':'cu is null'}`)
     await currentUser.jwt() // gets new JWT token only if expired
-console.log(`goddam - does anything work: btoken: ${btoken}`)
     const btoken = currentUser.token.access_token
+console.log(`goddam - does anything work: btoken: ${btoken}`)
 
     // ?? return the fetch?
     fetch(U, {headers: { Authorization: `Bearer ${btoken}` }})
