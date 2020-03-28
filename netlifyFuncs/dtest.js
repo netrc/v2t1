@@ -1,5 +1,5 @@
 
-const AWS = require("aws-sdk")
+const AWS = require('aws-sdk')
 const axios = require('axios')
 
 exports.handler = async (event, context) => {
@@ -19,7 +19,7 @@ exports.handler = async (event, context) => {
   const params = {
     TableName: DTable,
     Item: {
-      pk1: "church",
+      pk1: 'church',
       sk1: 'AAA-TEST-FROM-NET-FUNC',
       address: 'address 1',
       year: 'c2020',
@@ -27,16 +27,15 @@ exports.handler = async (event, context) => {
     }
   };
 
-  let s = "dtest handler: (asssumed) error"
-  try {
-    const data = docClient.put(params).promise()
-    s = params.Item.pk1 + ` - put ok: data: ${data}`
-  } catch (err) {
-    s += ` error catch: err`
-  }
+  let s = 'dtest handler: (asssumed) error'
+  docClient.put(params).promise().then( r => {
+      s = params.Item.pk1 + ` - put ok: data: ${r}`
+  }).catch(err => {
+    s += ` error catch: ${err}`
+  })
 
   return {
     statusCode: 200,
-    body: `dtest: s:${s}  --- VLCB_TABLE_NAME:${process.env.VLCB_TABLE_NAME} - set via netlifyFuncs...i:${iStr}   .....   u:${uStr}`
+    body: `dtest: s:${s}  --- VLCB_TABLE_NAME:${process.env.VLCB_TABLE_NAME} - ...i:${iStr}   .....   u:${uStr}`
   };
 };

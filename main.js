@@ -19,7 +19,7 @@ const mapUrl = (ll) => `https://maps.google.com/maps?ll=${ll[0]},${ll[1]}&q=${ll
 const mainDtestClick = (e) => {
   console.log('mainDtestClick()')
   const U = 'https://ecstatic-albattani-acc6c5.netlify.com/.netlify/functions/dtest'
-  fetch(U)
+  fetch(U, {credentials:'include'})
   .then((response) => {
     console.log(`mainDtestClick response status: ${response.status}`)
     return response.text()  // .text() and .json() are promises
