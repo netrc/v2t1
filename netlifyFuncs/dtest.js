@@ -28,7 +28,12 @@ exports.handler = async (event, context) => {
   };
 
   const s = await docClient.put(params, function(err, data) {
-    const s = c.name + ((err) ? " - put error:"+JSON.stringify(err, null, 2) : " - put ok")
+    const s = params.Item.pk1 + ((err) ? ` - put error: ${err}` : " - put ok")
+if (err) {
+console.log(`d log: fetch err`) 
+} else {
+consolel.log(`d log: fetch ok? `)
+}
     return s
   })
 
