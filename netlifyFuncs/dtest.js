@@ -28,18 +28,19 @@ exports.handler = async (event, context) => {
   };
 
   let s = 'dtest handler: (asssumed) error'
-  docClient.put(params).promise().then( r => {
-    s = params.Item.pk1 + ` - put ok: data: ${r}`
-    return {
-      statusCode: 201,
-      body: `dtest: s:${s}  --- VLCB_TABLE_NAME:${process.env.VLCB_TABLE_NAME} - ...i:${iStr}   .....   u:${uStr}`
-    }
-  }).catch(err => {
-    s += ` error catch: ${err}`
-    return {
-      statusCode: 418,
-      body: `dtest: s:${s}  --- VLCB_TABLE_NAME:${process.env.VLCB_TABLE_NAME} - ...i:${iStr}   .....   u:${uStr}`
-    }
-  })
-
+  return docClient.put(params).promise()
+    .then( r => {
+      s = params.Item.pk1 + ` - put ok: data: ${r}`
+      return { 
+        statusCode: 201,
+        body: `dtest: s:${s}  --- VLCB_TABLE_NAME:${process.env.VLCB_TABLE_NAME} - ...i:${iStr}   .....   u:${uStr}`
+      }
+    })
+    .catch(err => {
+      s += ` error catch: ${err}`
+      return {
+        statusCode: 418,
+        body: `dtest: s:${s}  --- VLCB_TABLE_NAME:${process.env.VLCB_TABLE_NAME} - ...i:${iStr}   .....   u:${uStr}`
+      }
+    })
 };
