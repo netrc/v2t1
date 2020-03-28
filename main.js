@@ -16,14 +16,13 @@ const mdConv = new showdown.Converter()
 const DGEByID = (id) => document.getElementById(id)
 const mapUrl = (ll) => `https://maps.google.com/maps?ll=${ll[0]},${ll[1]}&q=${ll[0]},${ll[1]} &hl=en&t=m&z=12`
 
-const currentUser = netlifyIdentity.currentUser()
-DGEByID('currentUser').innerHTML = (!user) ? `user is null` : `${user.email} ... ${user.user_metadata.full_name} roles:${user.user_metadata.roles.join(',')}`
-
 // for calling netlify funcs with token: https://dev.to/moshe/implementing-access-control-with-netlify-identity-and-netlify-functions-3jpj
 
 const mainDtestClick = (e) => {
   const U = 'https://ecstatic-albattani-acc6c5.netlify.com/.netlify/functions/dtest'
   (async () => { // see above URL for tools to put in separate file/module
+const currentUser = netlifyIdentity.currentUser()
+DGEByID('currentUser').innerHTML = (!user) ? `user is null` : `${user.email} ... ${user.user_metadata.full_name} roles:${user.user_metadata.roles.join(',')}`
     await currentUser.jwt() // gets new JWT token only if expired
     const btoken = currentUser.token.access_token
 
