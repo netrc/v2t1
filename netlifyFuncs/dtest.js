@@ -15,6 +15,16 @@ exports.handler = async (event, context) => {
   const {identity, user} = context.clientContext;
   const iStr = (identity) ? JSON.stringify(identity) : 'no i val'
   const uStr = (user) ? JSON.stringify(user) : 'no u val'
+  const roles = (user) ? clientContext.user.app_metadata.roles : ['h-null']
+  const rolesStr = roles.join(',')
+  const isAdmin = () => roles.includes('admin')
+
+  if (!isAdmin) {
+      return { 
+        statusCode: 401,
+        body: `dtest: unauthorized roles:${roles} ...i:${iStr}   .....   u:${uStr}`
+      }
+  }
 
   const params = {
     TableName: DTable,
@@ -33,7 +43,7 @@ exports.handler = async (event, context) => {
       s = params.Item.pk1 + ` - put ok: data: ${r}`
       return { 
         statusCode: 201,
-        body: `dtest: s:${s}  --- VLCB_TABLE_NAME:${process.env.VLCB_TABLE_NAME} - ...i:${iStr}   .....   u:${uStr}`
+        body: `dtest: s:${s}  --- roles:${roles} VLCB_TABLE_NAME:${process.env.VLCB_TABLE_NAME} - ...i:${iStr}   .....   u:${uStr}`
       }
     })
     .catch(err => {
