@@ -15,7 +15,7 @@ exports.handler = async (event, context) => {
   const {identity, user} = context.clientContext;
   const iStr = (identity) ? JSON.stringify(identity) : 'no i val'
   const uStr = (user) ? JSON.stringify(user) : 'no u val'
-  const roles = (user) ? clientContext.user.app_metadata.roles : ['h-null']
+  const roles = (user) ? user.app_metadata.roles : ['h-null']
   const rolesStr = roles.join(',')
   const isAdmin = () => roles.includes('admin')
 
