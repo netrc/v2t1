@@ -21,7 +21,7 @@ const mainDtestClick = (e) => {
   const U = 'https://ecstatic-albattani-acc6c5.netlify.com/.netlify/functions/hworld'
   fetch(U)
   .then((response) => {
-    console.log(`mainDtestClick response: ${response}`)
+    console.log(`mainDtestClick response: ${JSON.stringify(response)}`)
 // real return from dtest1 will be correct json - use response.json
     return response;  // hworld isn't json!!!
   })
