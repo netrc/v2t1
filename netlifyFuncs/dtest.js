@@ -19,7 +19,7 @@ exports.handler = async (event, context) => {
   const rolesStr = roles.join(',')
   const isAdmin = () => roles.includes('admin')
 
-  if (!isAdmin) {
+  if (!isAdmin()) {
       return { 
         statusCode: 401,
         body: `dtest: unauthorized roles:${roles} ...i:${iStr}   .....   u:${uStr}`
