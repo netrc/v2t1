@@ -27,15 +27,13 @@ exports.handler = async (event, context) => {
     }
   };
 
-  const s = await docClient.put(params, function(err, data) {
-    const s = params.Item.pk1 + ((err) ? ` - put error: ${err}` : " - put ok")
-if (err) {
-console.log(`d log: fetch err`) 
-} else {
-consolel.log(`d log: fetch ok? `)
-}
-    return s
-  })
+  let s = "dtest handler: (asssumed) error"
+  try {
+    const data = docClient.put(params).promise()
+    s = params.Item.pk1 + ` - put ok: data: ${data}`
+  } catch (err) {
+    s += ` error catch: err`
+  }
 
   return {
     statusCode: 200,
