@@ -34,6 +34,6 @@ exports.handler = async (event, context) => {
 
   return {
     statusCode: 200,
-    body: `dtest: s:${s}  --- VLCB_TABLE_NAME:${process.env.VLCB_TABLE_NAME} - set via netlifyFuncs...i:${iStr}   .....   u:${uStr}`
+    body: `dtest: s:${JSON.stringify(s)}  --- VLCB_TABLE_NAME:${process.env.VLCB_TABLE_NAME} - set via netlifyFuncs...i:${iStr}   .....   u:${uStr}`
   };
 };
