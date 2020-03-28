@@ -9,18 +9,23 @@ first test of 2nd version of vlcb
 Currently at https://ecstatic-albattani-acc6c5.netlify.com/
 
 ## Todo
-* see what happens with netlify identity - working ok; gets federated identity; manually sets role; need code to check
+* ok - hw func - need build.sh to put env in netlifyFuncs dir ?
+* todo - dtest - use new env vars
+* todo - build.sh - put new env vars in file
+* ? dtest: aws-sdk ok? aws config ok? doc ok?
 * hw func - return user info? !not via curl (of course)
-* hw func - need build.sh to put env in netlifyFuncs dir ?
 * hw func - access control via settings/control panel? - don't see anything
 * hw func - called from page itself - see user info?
 * hw func - see role?
 * hw func - use aws-sdk, access dtest1
+* try netlify identity button
 * so... all reads direct through client-side(browser) code (w/ caching)
 * so... all writes through calls to netlify funcs
 * netlify funcs - only 125K calls per month  / $25/month for 2m
 * ? use netlify access controlled functions to manage who can write to dtest1? (with AWS secrets in func env?)
 * should be able to see user.role - admin (can't see right now?)
+* see what happens with netlify identity 
+  ** working great; gets federated identity; manually sets role; need code to check
 * how to programmatically change role?
 * restrict dynamodb RO to just the dtest1 table
 * why not work with .env.js ?

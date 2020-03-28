@@ -16,6 +16,19 @@ const mdConv = new showdown.Converter()
 const DGEByID = (id) => document.getElementById(id)
 const mapUrl = (ll) => `https://maps.google.com/maps?ll=${ll[0]},${ll[1]}&q=${ll[0]},${ll[1]} &hl=en&t=m&z=12`
 
+const mainDtestClick = (e) => {
+  console.log('mainDtestClick()')
+  const U = 'https://ecstatic-albattani-acc6c5.netlify.com/.netlify/functions/hworld'
+  fetch(U)
+  .then((response) => {
+    console.log(`response: ${response}`)
+    return response.json();
+  })
+  .catch((err) => {
+    console.log(`error: ${err}`);
+  });
+}
+
 const getChurch = (sk1Val) => {
   const pk1Val = "church"
   var params = {
