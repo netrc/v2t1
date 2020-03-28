@@ -9,41 +9,46 @@ first test of 2nd version of vlcb
 Currently at https://ecstatic-albattani-acc6c5.netlify.com/
 
 ## Todo
-* ok - hw func - need build.sh to put env in netlifyFuncs dir ?
-* todo - dtest - use new env vars
-* todo - build.sh - put new env vars in file
-* ? dtest: aws-sdk ok? aws config ok? doc ok?
-* hw func - return user info? !not via curl (of course)
-* hw func - access control via settings/control panel? - don't see anything
-* hw func - called from page itself - see user info?
-* hw func - see role?
-* hw func - use aws-sdk, access dtest1
 * try netlify identity button
 * so... all reads direct through client-side(browser) code (w/ caching)
 * so... all writes through calls to netlify funcs
 * netlify funcs - only 125K calls per month  / $25/month for 2m
-* ? use netlify access controlled functions to manage who can write to dtest1? (with AWS secrets in func env?)
-* should be able to see user.role - admin (can't see right now?)
 * see what happens with netlify identity 
-  ** working great; gets federated identity; manually sets role; need code to check
+  * working great; gets federated identity; manually sets role; need code to check
 * how to programmatically change role?
-* restrict dynamodb RO to just the dtest1 table
-* why not work with .env.js ?
+* restrict dynamodb RW&RO to just the dtest1 table
+* why doesn't front-end work with .env.js filename?
 
 
 # Config
-* dynamodb
-* iam group/id made - ric-dd-rw, ric-dd-ro
-* index.html/main.js run aws ddb read/query funcs directly
-* netlify
-** add repo to netlify app config
-** added build env vars
-** added build.sh, just to make env.js, w/ iam secrets
-** added netlify test function
-** setting 'admin' role to user manually
+* AWS
+  * dynamodb
+  * iam group/id made - ric-dd-rw, ric-dd-ro
+* Front-End
+  * index.html/main.js run aws ddb read/query funcs directly
+  * git push copies to netlify
+  * Need to get bearer token when invoking netflify func
+* Netlify front end
+  * add repo to netlify app config
+  * setting 'admin' role to user(me)  manually
+  * added build env vars
+    * build.sh makes env.js w/ iam secrets for front end
+    * env vars part of functions process.env 
+* Netlify functions
+  * converts bearer token to identity/roles automatically
 
 
 ## Done
+* ok - hw func - need build.sh to put env in netlifyFuncs dir ?
+* ok - dtest - use new env vars
+* ok - build.sh - put new env vars in file // build runs this with env set; we write to file to be used by index.html front end
+* ok dtest: aws-sdk ok? aws config ok? doc ok?
+* ok - front end has to get JWT token and send it (Auth Bearer) to netlify funcs
+* ok - dtest - Auth Bearer token is translated back to user context and roles
+* ok - funcs/dtest - no explicit access control from front panel (that I can see) (i.e. no true Gateway functionality)
+* ok - yes, you can see the roles array in metadata
+* ok - should be able to see user.role - admin 
+* ok - dtest - uses aws-sdk
 * ok - moved token to env.js file; was: ddb RO access token visible in github (AWS called!)
 * ok set bash build.sh as build script (to make env.js script)
 * ok - added netlify 
@@ -60,16 +65,15 @@ Currently at https://ecstatic-albattani-acc6c5.netlify.com/
 * ok - hw func - see env vars; VLCB_ENVA works
 
 
-
-
 ### two year old tools - aws cli
 Fri Apr 28 18:52:09 DST 2017
+
 Followed http://docs.aws.amazon.com/cli/latest/userguide/cli-roles.html
-- used pre-existing user riciam1
-- created new role dynmgr;  added riciam1 as assumeRole
-- created new policy AssumeDynMgr; added dynMgr as role
-- assigned AssumeDynMgr to riciam1
-- got new access ID and secret; added to awscli via "aws configure"
+* used pre-existing user riciam1
+* created new role dynmgr;  added riciam1 as assumeRole
+* created new policy AssumeDynMgr; added dynMgr as role
+* assigned AssumeDynMgr to riciam1
+* got new access ID and secret; added to awscli via "aws configure"
 
 				$ sudo apt-get install python-pip
 				$ sudo pip install awscli
