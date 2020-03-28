@@ -22,8 +22,10 @@ const mainDtestClick = (e) => {
   const U = 'https://ecstatic-albattani-acc6c5.netlify.com/.netlify/functions/dtest'  ;  // semi-c for IIFE
   (async () => { // see above URL for tools to put in separate file/module
 const currentUser = netlifyIdentity.currentUser()
-DGEByID('currentUser').innerHTML = (!user) ? `user is null` : `${user.email} ... ${user.user_metadata.full_name} roles:${user.user_metadata.roles.join(',')}`
+//DGEByID('currentUser').innerHTML = (!user) ? `user is null` : `${user.email} ... ${user.user_metadata.full_name} roles:${user.user_metadata.roles.join(',')}`
+console.log('goddam - does anything work: currentUser: ${(currentUser)?'cu is not null':'cu is null'}`)
     await currentUser.jwt() // gets new JWT token only if expired
+console.log('goddam - does anything work: btoken: ${btoken}`)
     const btoken = currentUser.token.access_token
 
     // ?? return the fetch?
